@@ -47,7 +47,7 @@ class Category(Base):
     questions = relationship('Question', backref='category', lazy=True)
 
 
-questionOfferedAnwser = Table('question_offered_anwser',
+questionOfferedAnwser = Table('question_offered_answer',
                               Base.metadata,
                               Column('question_id', Integer, ForeignKey(
                                   'question.question_id'), primary_key=True),
