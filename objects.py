@@ -1,8 +1,9 @@
 import graphene
 from graphene import relay
 from graphene_sqlalchemy import SQLAlchemyObjectType
+from database import db_session
 
-from models import Course, SchoolSubject, Teacher, Category, Question, OfferedAnswer, Answer, AnswerText, AnswerChoice
+from models import Course, SchoolSubject, Answer, Teacher, Category, Question, OfferedAnswer, AnswerText, AnswerChoice
 
 
 class TeacherObject(SQLAlchemyObjectType):
@@ -41,12 +42,6 @@ class OfferedAnswerObject(SQLAlchemyObjectType):
         interfaces = (relay.Node, )
 
 
-class AnswerObject(SQLAlchemyObjectType):
-    class Meta:
-        model = Answer
-        interfaces = (relay.Node, )
-
-
 class AnswerTextObject(SQLAlchemyObjectType):
     class Meta:
         model = AnswerText
@@ -56,4 +51,9 @@ class AnswerTextObject(SQLAlchemyObjectType):
 class AnswerChoiceObject(SQLAlchemyObjectType):
     class Meta:
         model = AnswerChoice
+        interfaces = (relay.Node, )
+
+class AnswerObject(SQLAlchemyObjectType):
+    class Meta:
+        model = Answer
         interfaces = (relay.Node, )
